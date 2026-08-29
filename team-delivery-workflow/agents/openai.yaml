@@ -1,0 +1,4 @@
+interface:
+  display_name: "Team Delivery Workflow"
+  short_description: "Coordinate review-driven multi-agent delivery"
+  default_prompt: "Use $team-delivery-workflow for this repository: inspect the repo, run the six-role review, implement with evidence-first testing, report status, and verify staging before production."
