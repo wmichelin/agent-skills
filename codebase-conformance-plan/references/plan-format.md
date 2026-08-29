@@ -8,6 +8,7 @@ Use this structure, omitting sections that do not apply.
 - Commands run and their results
 - Architecture and contracts relevant to the work
 - Engineering-principle source and any local rule that overrides it
+- Root-level source inventory and the proposed ownership of every file that should move
 
 ## Findings
 
@@ -15,7 +16,7 @@ For each finding: identifier, evidence (file/symbol), affected principle, impact
 
 ## Ordered work items
 
-For each item: objective; files/symbols; implementation approach; behavioral and compatibility risks; validation commands/tests; rollback or recovery approach; and whether it can run independently. Include a small, observable checkpoint after each risky item.
+For each item: objective; files/symbols; implementation approach; behavioral and compatibility risks; validation commands/tests; rollback or recovery approach; and whether it can run independently. For a package move, include old and new import paths, entrypoint updates, and the compatibility decision. Include a small, observable checkpoint after each risky item.
 
 ## Execution topology
 

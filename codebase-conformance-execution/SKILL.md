@@ -17,4 +17,4 @@ Do not let multiple agents concurrently edit the same files, generated outputs, 
 
 ## Completion
 
-Integrate in plan order. After each integration, inspect the diff and run the work item's targeted checks. At the end, run the highest-signal repository checks feasible, review the aggregate diff against the philosophy, and report changed behavior, validation evidence, deferred findings, and any residual risk. A failing baseline test is not proof of a new regression; document it and isolate the change's effect before proceeding.
+Integrate in plan order. For directory restructuring, move only one cohesive package or domain per checkpoint, update its callers and tests, then run the targeted build/test before beginning the next move. After each integration, inspect the diff and run the work item's targeted checks. At the end, run the highest-signal repository checks feasible, review the aggregate diff against the philosophy, and report changed behavior, validation evidence, deferred findings, and any residual risk. A failing baseline test is not proof of a new regression; document it and isolate the change's effect before proceeding.

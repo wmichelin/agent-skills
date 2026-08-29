@@ -1,3 +1,8 @@
+# Engineering philosophy
+
+Explicit user direction and repository-local safety or compliance rules take precedence over this document.
+
+<!-- BEGIN managed: agent-skills engineering philosophy -->
 # Engineering principles
 
 This is the user's current engineering playbook. It is primarily for Go codebases. User instructions and repository-local rules take precedence.
@@ -39,3 +44,4 @@ This is the user's current engineering playbook. It is primarily for Go codebase
 ## Decision record
 
 For any exception or material tradeoff, record: the principle affected, the evidence, the chosen option, and the risk accepted. Keep this proportional; a short note in the plan or PR is normally enough.
+<!-- END managed: agent-skills engineering philosophy -->
