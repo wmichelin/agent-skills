@@ -1,0 +1,3 @@
+interface:
+  display_name: "GitHub Issue Intake"
+  short_description: "Triage an issue into a delivery brief"

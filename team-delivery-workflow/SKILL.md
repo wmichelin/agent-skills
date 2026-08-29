@@ -1,17 +1,23 @@
 ---
 name: team-delivery-workflow
-description: "Coordinate a repo-agnostic, review-driven delivery team around GitHub Issues: triage bugs and features, gather six specialist reviews, implement with evidence-first testing, publish status updates, and verify staging before production."
+description: "Coordinate a repo-agnostic, review-driven engineering team from a manual request or prepared delivery brief. Use for team review, implementation, verification, and staged delivery; not issue intake."
 ---
 
 # Team Delivery Workflow
 
-Use this skill when a repository needs a durable workflow for bugs, feature requests, and coordinated engineering delivery. Adapt to the repository’s existing language, CI, deployment, and issue conventions; do not assume a particular framework, cloud provider, host, or toolchain.
+Use this skill when a repository needs coordinated engineering delivery. Invoke it directly with a user request, a delivery brief, an approved conformance plan, or an issue reference that is already ready for delivery. It does not perform issue intake; use `github-issue-intake` when an issue first needs triage.
+
+Adapt to the repository’s existing language, CI, deployment, and issue conventions; do not assume a particular framework, cloud provider, host, or toolchain.
+
+## Start with a delivery brief
+
+Before assigning work, establish the outcome, available evidence, acceptance criteria, scope boundaries, priority, affected repository, and any delivery constraints. A manually supplied request may serve as the brief; an intake skill may supply a completed one. Investigate ordinary ambiguities yourself and ask the user only when a decision materially changes scope, risk, or external behavior.
 
 ## Operating model
 
 One execution agent owns the work: repository changes, commits, pushes, deployments, and final verification. The specialist roles review and advise; they do not create competing implementations or silently mutate the repository.
 
-Run these six perspectives for every non-trivial issue, recording their input in one issue comment or linked artifact:
+Run these six perspectives for every non-trivial delivery effort, recording their input in one work-tracker comment or linked artifact when one exists:
 
 - Product manager: user problem, scope, priority, acceptance criteria, and out-of-scope behavior.
 - Architect: boundaries, data/API changes, security, compatibility, and migration/rollback concerns.
@@ -22,21 +28,19 @@ Run these six perspectives for every non-trivial issue, recording their input in
 
 The review is not complete until each role has either a concrete recommendation or an explicit “no concerns.” Preserve decisions and unresolved risks; do not replace them with a vague approval.
 
-## Issue lifecycle
+## Delivery lifecycle
 
-Prefer GitHub Issues with bug and feature forms. Reuse existing labels when present; otherwise use a small, consistent vocabulary such as `bug`, `feature`, `team-review`, `agent-ready`, `agent-claimed`, `staging-ready`, and `blocked`.
-
-1. Intake: capture the user-visible problem or outcome, evidence, impact, acceptance criteria, and priority.
-2. Claim: add a status comment naming the execution agent, current phase, and next checkpoint; apply the claim label.
+1. Confirm the delivery brief and inspect the repository.
+2. Claim the work when an issue or work tracker is in scope; otherwise post a concise user-facing start update.
 3. Team review: add the six-role review before coding, unless the change is genuinely trivial.
 4. Plan: turn the review into concrete implementation and test tasks. Resolve material ambiguities; do not outsource basic investigation to the reporter.
 5. Implement: make the smallest coherent change, preserving local conventions and unrelated user work.
 6. Test: run focused tests, the relevant project-wide checks, and a build/package check where applicable.
-7. Publish: commit and push the verified change. Never claim a push or deployment without checking its result.
-8. Stage: deploy the branch or commit to the project’s staging environment and run smoke/acceptance checks. Put the exact staging URL in every issue status comment, including claim, test, deployment, and blocker updates.
-9. Close: document the result, test commands, deployment URL or identifier, remaining risks, and follow-up issues. Close only when acceptance criteria are verified.
+7. Publish only when authorized: commit and push the verified change. Never claim a push or deployment without checking its result.
+8. Stage when the repository has staging and the requested delivery requires it: deploy the branch or commit and run smoke/acceptance checks.
+9. Close or hand off: document the result, test commands, deployment URL or identifier, remaining risks, and follow-up issues. Close a tracked issue only when acceptance criteria are verified.
 
-Use the status headings and review template in `references/status-and-review-template.md`. Every issue-bot or execution-status comment must include the configured staging URL and its state (`pending`, `deploying`, `verified`, or `blocked`); include the link even before deployment completes.
+Use the status headings and review template in `references/status-and-review-template.md`. When an issue or work tracker is in scope, record the review and status there. Every issue-bot or execution-status comment must include the configured staging URL and its state (`pending`, `deploying`, `verified`, or `blocked`); include the link even before deployment completes.
 
 ## Evidence-first bug handling
 
@@ -55,7 +59,7 @@ When reproduction is unavailable, proceed with static analysis, a targeted regre
 
 ## Status and automation
 
-Provide a visible update at each meaningful transition: received, claimed, review complete, implementation started, tests running/passed, pushed, staging deployed, staging verified, or blocked. A heartbeat should include the last completed action, current action, next action, and the specific blocker if any.
+Provide a visible update at each meaningful transition: claimed or started, review complete, implementation started, tests running/passed, pushed, staging deployed, staging verified, or blocked. A heartbeat should include the last completed action, current action, next action, and the specific blocker if any.
 
 For GitHub automation, prefer a signed, event-driven workflow such as GitHub Actions on a trusted self-hosted runner when repository access and deployment credentials are already configured. Use polling as a fallback. If a public webhook is required, validate the signature, restrict accepted events, make delivery idempotent, and never expose an agent-control endpoint directly to the internet. The trigger should acknowledge the issue quickly, then hand work to the execution loop.
 
@@ -69,6 +73,6 @@ Before declaring success, verify the deployed revision, health check, primary us
 
 ## Cross-repository setup
 
-When installing this workflow in another repository, first inspect its instructions, issue forms, labels, CI, deployment targets, and available runners. Then adapt the templates and automation without copying repository-specific paths, domains, account names, tokens, or secrets. Keep the role review and evidence/status requirements stable; customize only the integration points.
+When installing this workflow in another repository, first inspect its instructions, work-tracker conventions, CI, deployment targets, and available runners. Then adapt the templates and automation without copying repository-specific paths, domains, account names, tokens, or secrets. Keep the role review and evidence/status requirements stable; customize only the integration points.
 
 Do not invent a staging URL, runner, webhook, credential, or successful deployment. If a required integration is absent, identify the smallest setup needed and continue with local review/testing where possible.

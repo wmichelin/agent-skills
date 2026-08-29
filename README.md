@@ -4,7 +4,8 @@ Reusable skills and engineering-rule workflows for AI coding agents.
 
 ## Skills
 
-- [`team-delivery-workflow`](team-delivery-workflow/) — coordinates GitHub issue intake, six-role review, evidence-first testing, status updates, and staging/production gates.
+- [`github-issue-intake`](github-issue-intake/) — triages a GitHub issue into a delivery brief, then hands it to the team workflow.
+- [`team-delivery-workflow`](team-delivery-workflow/) — coordinates six-role review, evidence-first implementation, verification, and delivery from a manual request or prepared brief.
 - [`install-engineering-philosophy`](install-engineering-philosophy/) — installs provider-neutral engineering rules with thin adapters for Codex, Claude, and Cursor.
 - [`codebase-conformance-plan`](codebase-conformance-plan/) — assesses a codebase against installed rules and produces a safe, evidence-backed plan.
 - [`codebase-conformance-execution`](codebase-conformance-execution/) — executes an approved conformance plan with coordinated agents and regression evidence.

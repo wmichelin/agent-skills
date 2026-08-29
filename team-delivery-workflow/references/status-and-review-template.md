@@ -5,7 +5,7 @@ Use one durable issue comment, or a linked project artifact if the platform has 
 ## Status update
 
 ```text
-Status: <received | claimed | reviewing | implementing | testing | pushed | staging | verified | blocked>
+Status: <started | claimed | reviewing | implementing | testing | pushed | staging | verified | blocked>
 Last completed: <concrete action and result>
 Now: <current action>
 Next: <next action and checkpoint>
@@ -14,7 +14,7 @@ Staging: <exact staging URL> (<pending | deploying | verified | blocked>)
 Blocker: <specific blocker and owner, or “none”>
 ```
 
-Post at intake/claim, after the team review, when implementation starts, after tests, after push, after staging deployment, and on verification or failure. For long-running work, post a heartbeat at the repository’s agreed interval (normally 5–15 minutes).
+Post at claim/start, after the team review, when implementation starts, after tests, after push, after staging deployment, and on verification or failure. For long-running work, post a heartbeat at the repository’s agreed interval (normally 5–15 minutes).
 
 ## Six-role review
 
