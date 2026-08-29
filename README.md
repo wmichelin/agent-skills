@@ -41,4 +41,4 @@ Reload or restart the relevant agent session after installation. To update, pull
 
 ## Update installed engineering rules
 
-First update the installed `install-engineering-philosophy` skill from this repository, then ask that skill to refresh the target repository. It updates the managed section of `ENGINEERING_PHILOSOPHY.md` in place and preserves project-specific rules outside that section. Original, uncustomized installations made before managed sections were introduced are migrated automatically; customized legacy rules require confirmation before they are changed.
+Ask `install-engineering-philosophy` to refresh the target repository. Before making changes, it fetches the current canonical rules from this repository's `main` branch. It updates the managed section of `ENGINEERING_PHILOSOPHY.md` in place and preserves project-specific rules outside that section. Original, uncustomized installations made before managed sections were introduced are migrated automatically; customized legacy rules are converged with the fetched version and any conflicts are surfaced for review.
