@@ -33,10 +33,10 @@ Prefer GitHub Issues with bug and feature forms. Reuse existing labels when pres
 5. Implement: make the smallest coherent change, preserving local conventions and unrelated user work.
 6. Test: run focused tests, the relevant project-wide checks, and a build/package check where applicable.
 7. Publish: commit and push the verified change. Never claim a push or deployment without checking its result.
-8. Stage: deploy the branch or commit to the project’s staging environment and run smoke/acceptance checks.
+8. Stage: deploy the branch or commit to the project’s staging environment and run smoke/acceptance checks. Put the exact staging URL in every issue status comment, including claim, test, deployment, and blocker updates.
 9. Close: document the result, test commands, deployment URL or identifier, remaining risks, and follow-up issues. Close only when acceptance criteria are verified.
 
-Use the status headings and review template in `references/status-and-review-template.md`.
+Use the status headings and review template in `references/status-and-review-template.md`. Every issue-bot or execution-status comment must include the configured staging URL and its state (`pending`, `deploying`, `verified`, or `blocked`); include the link even before deployment completes.
 
 ## Evidence-first bug handling
 
@@ -65,7 +65,7 @@ Automation must avoid duplicate claims, leave a comment when it starts, and leav
 
 Treat push, build, deployment, and smoke-test failures as active blockers. Stop the current promotion, report the exact failure, repair it when authorized, and rerun the gate. Deploy each meaningful slice to staging so the reporter can inspect progress. Production deployment requires explicit user approval unless the repository’s documented policy clearly grants automatic production promotion.
 
-Before declaring success, verify the deployed revision, health check, primary user path, relevant logs, and issue acceptance criteria. If any check cannot run, say so plainly and leave the issue open with a concrete next action.
+Before declaring success, verify the deployed revision, health check, primary user path, relevant logs, and issue acceptance criteria. If any check cannot run, say so plainly, include the staging URL with the current state, and leave the issue open with a concrete next action. Never invent a URL; discover or configure the repository’s staging URL before enabling issue automation.
 
 ## Cross-repository setup
 

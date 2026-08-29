@@ -10,6 +10,7 @@ Last completed: <concrete action and result>
 Now: <current action>
 Next: <next action and checkpoint>
 Evidence: <issue links, test output, commit, deployment revision, or screenshot>
+Staging: <exact staging URL> (<pending | deploying | verified | blocked>)
 Blocker: <specific blocker and owner, or “none”>
 ```
 
