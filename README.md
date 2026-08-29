@@ -1,4 +1,4 @@
-# Walter’s Codex Skills
+# AI Skills
 
 Reusable Codex skills for Walter’s repositories.
 
