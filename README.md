@@ -38,3 +38,7 @@ done
 If a harness does not support skills, use `install-engineering-philosophy`'s `references/principles.md` as the portable source for repository rules, then follow that harness's mechanism for project instructions. The installed `ENGINEERING_PHILOSOPHY.md` remains provider-neutral; Codex, Claude, and Cursor files are only thin pointers to it.
 
 Reload or restart the relevant agent session after installation. To update, pull this repository and replace the selected skill directory.
+
+## Update installed engineering rules
+
+First update the installed `install-engineering-philosophy` skill from this repository, then ask that skill to refresh the target repository. It updates the managed section of `ENGINEERING_PHILOSOPHY.md` in place and preserves project-specific rules outside that section. Original, uncustomized installations made before managed sections were introduced are migrated automatically; customized legacy rules require confirmation before they are changed.

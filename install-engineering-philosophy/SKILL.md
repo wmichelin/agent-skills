@@ -35,4 +35,10 @@ Confirm every created or updated adapter resolves to the canonical document usin
 
 ## Updating existing installations
 
-When asked to refresh rules in a repository, replace only the content between the managed markers with the current [canonical rules](references/principles.md); preserve all text outside them. If markers are absent, compare the existing document with the canonical rules and ask before a potentially destructive replacement. Re-verify each adapter afterwards. Keep provider adapters thin so changes remain provider-agnostic.
+Before refreshing a repository, make sure the running `install-engineering-philosophy` skill itself is current; an older installed copy cannot apply newer rules.
+
+When asked to refresh rules in a repository, replace only the content between the managed markers with the current [canonical rules](references/principles.md); preserve all text outside them.
+
+For legacy installations without markers, calculate the SHA-256 of the complete `ENGINEERING_PHILOSOPHY.md`. If it is `899425ec107d7a823bfcca0d6e59b2bc379c04ba0c33cfa93a4b0cc64baa0ba8`, it is the original uncustomized installation: replace it automatically with a document containing the priority notice and current canonical rules inside the managed markers. If it differs, it may contain local customization; preserve it and ask the user before replacing or merging it.
+
+Re-verify each adapter afterwards. Keep provider adapters thin so changes remain provider-agnostic.
