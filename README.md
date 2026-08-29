@@ -1,4 +1,4 @@
-# AI Skills
+# Agent Skills
 
 Reusable Codex skills for Walter’s repositories.
 
